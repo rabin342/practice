@@ -2,9 +2,6 @@ import styled from "styled-components";
 const SearchResult = ({ data }) => {
   return (
     <TopContainer>
-      <div className="Search">
-        <input placeholder="Search Item" />
-      </div>
       <ElectronicCards>
         {data?.map(({ name, image, price, description }) => (
           <ElectronicCard key={name}>
@@ -30,18 +27,6 @@ export default SearchResult;
 const TopContainer = styled.section`
   padding: 20px;
 
-
-  .Search input {
-    background-color: transparent;
-    border: 1px solid red;
-    color: white;
-    border-radius: 5px;
-    height: 30px;
-    font-size: 14px;
-    padding:10px;
-    float: left;
-    
-  }
 `;
 
 const ElectronicCards = styled.div`
