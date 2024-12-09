@@ -1,10 +1,11 @@
 import styled from "styled-components";
-const SearchResult = ({ data }) => {
+
+const SearchResult = ({ data, addToCart }) => {
   return (
     <TopContainer>
       <ElectronicCards>
-        {data?.map(({ name, image, price, description }) => (
-          <ElectronicCard key={name}>
+        {data?.map(({ id, name, image, price, description }) => (
+          <ElectronicCard key={id}>
             <div className="electronic_image">
               <img src={image} alt={name} />
             </div>
@@ -13,6 +14,9 @@ const SearchResult = ({ data }) => {
                 <h3>{name}</h3>
                 <p>{description}</p>
                 <p>${price}</p>
+                <button onClick={() => addToCart({ id, name, price })}>
+                  Add to Cart
+                </button>
               </div>
             </div>
           </ElectronicCard>
@@ -26,7 +30,6 @@ export default SearchResult;
 
 const TopContainer = styled.section`
   padding: 20px;
-
 `;
 
 const ElectronicCards = styled.div`
@@ -35,20 +38,16 @@ const ElectronicCards = styled.div`
   row-gap: 10px;
   column-gap: 10px;
   justify-content: center;
-  
-
 `;
 
 const ElectronicCard = styled.div`
-
   border-radius: 10px;
   border: 1px solid #ccc;
   padding: 16px;
-  max-width:320px;
+  max-width: 320px;
 
   .electronic_image img {
-
-    max-width: 50%;
+    max-width: 100%;
     border-radius: 10px;
   }
 
@@ -56,9 +55,9 @@ const ElectronicCard = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    .h1{
-    margin-top: 8px;
-    font-size: 16px;
+
+    .info {
+      margin-top: 8px;
     }
   }
 `;
